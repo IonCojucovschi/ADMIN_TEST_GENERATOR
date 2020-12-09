@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PddAdmin.Models;
 
 namespace PddAdmin.Controllers
@@ -20,6 +21,17 @@ namespace PddAdmin.Controllers
         {
             _env = env;
             _pDDContext = pDDContext;
+        }
+
+        public IActionResult GetAllResources() {
+
+            var allQuery = _pDDContext.QueryItem.ToList();
+            foreach (var qr in allQuery)
+            {
+                qr.Responses = _pDDContext.Responses.Where(elm => elm.QueryId == qr.Id).ToList();
+            }
+            var jsonSerialized = JsonConvert.SerializeObject(allQuery);
+            return Ok(jsonSerialized);
         }
 
         // GET: Query
@@ -104,10 +116,14 @@ namespace PddAdmin.Controllers
             var query = _pDDContext.QueryItem.FirstOrDefault(el=>el.Id==model.Id);
             if (query!=null)
             {
-                string BasePath = _env.WebRootPath + "\\img\\";
-                                FileInfo imagePdd = new FileInfo(BasePath + query?.ImageUri.Split("/").LastOrDefault());
-                if (!string.IsNullOrEmpty(query.ImageUri) && imagePdd.Exists)
-                    imagePdd.Delete();
+                if (!string.IsNullOrEmpty(query.ImageUri) && model.ImageFile!=null)
+                {
+                    string BasePath = _env.WebRootPath + "\\img\\";
+                    FileInfo imagePdd = new FileInfo(BasePath + query?.ImageUri.Split("/").LastOrDefault());
+                    if (!string.IsNullOrEmpty(query.ImageUri) && imagePdd.Exists)
+                        imagePdd.Delete();
+                }
+                
 
                 var remoVeres = _pDDContext.Responses.Where(el => el.QueryId == model.Id).ToList();
                 _pDDContext.RemoveRange(remoVeres);
@@ -117,7 +133,7 @@ namespace PddAdmin.Controllers
 
                 query.Comment = model.Comment;
                 query.Id = model.Id;
-                query.ImageUri = imagePath;//model.ImageUri,
+                query.ImageUri = model.ImageFile != null ? imagePath : query.ImageUri;
                 query.ChapterKey = model.ChapterKey;
                 query.Query = model.Query;
                 query.Thema = model.Thema;
