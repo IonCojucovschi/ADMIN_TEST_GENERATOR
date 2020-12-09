@@ -1,0 +1,129 @@
+﻿@model PddAdmin.Model.QueryItem
+
+@{
+    ViewData["Title"] = "CreateQuery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #responsesListManaged div {
+        margin: 3px;
+        display: inline-block;
+    }
+    #createResponseItem {
+        width: 30px;
+        font-size: 18px;
+        border-radius: 30px;
+        border: solid 2px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bolder;
+        color: #666;
+        margin-left: 20px;
+    }
+    #saveResponsesList {
+        
+        font-size: 18px;
+        border-radius: 30px;
+        border: solid 2px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bolder;
+        color: green;
+        margin-left: 20px;
+    }
+    .removeResponse {
+        height: 30px;
+        width: 30px;
+        font-size: 16px;
+        border-radius: 30px;
+        border: solid 2px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bolder;
+        color: red;
+    }
+</style>
+<h1>CreateQuery</h1>
+
+<h4>QueryItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <form method="post" action="@(string.IsNullOrEmpty(Model.Query)? "Create" : "UpdateQuery")" enctype="multipart/form-data">
+            <div>
+                <a href="/Query/AllQueries">Back to List</a>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display:none">
+                <label asp-for="Id" class="control-label"></label>
+                <input name="model.Id" value="@(string.IsNullOrEmpty(Model.Query)? 0 : Model.Id)" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChapterKey" class="control-label">Chapter Key</label>
+                <input name="model.ChapterKey" value="@Model.ChapterKey" class="form-control" />
+                <span asp-validation-for="Thema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thema" class="control-label">Thema</label>
+                <input name="model.Thema" value="@Model.Thema" class="form-control" />
+                <span asp-validation-for="Thema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Query" class="control-label">Query</label>
+                <input name="model.Query" value="@Model.Query" class="form-control" />
+                <span asp-validation-for="Query" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">ImageFile</label>
+                <input name="model.ImageFile" accept="image/*" type="file" class="image-file-upload" id="imageLoader" />
+                <img class="imageLoader" style="height:90px;" src="@("/img" + Model.ImageUri)" onerror="OnErrorImageLoading(this)" />
+            </div>
+            <div class="form-group">
+                <div style="display:flex;">
+                    <label asp-for="ImageFile" class="control-label">Responses</label>
+                    <div id="createResponseItem">
+                        +
+                    </div>
+                    <div id="saveResponsesList" onclick="setAllResponses()">
+                        Save
+                    </div>
+                </div>
+                <div id="responsesListManaged">
+                    @foreach (var e in Model.Responses)
+                    {
+                        <div>
+                            <input style="width:400px" data-type="inputResponse" class="when-input-ischanged" type="text" value="@e.Response" />
+                            <input style="margin:5px;" data-type="isTrue" type="checkbox" onchange="istrueOrFalse(this)" value="@e.IsRight.ToString().ToLowerInvariant()" @(e.IsRight ? "checked" : "")>
+                            <div class="removeResponse" onClick="removeResponse(this)">x</div>
+                        </div>
+                    }
+                </div>
+
+                <div id="responsesList" style="display:none;">
+
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label">Comment</label>
+                <input name="model.Comment" class="form-control" value="@Model.Comment" />
+                <span asp-validation-for="Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="/Query/AllQueries">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/createQuery.js"></script>
+}

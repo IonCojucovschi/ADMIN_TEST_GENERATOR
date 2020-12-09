@@ -1,0 +1,135 @@
+﻿@model IEnumerable<PddAdmin.Models.QueryItem>
+
+@{
+    ViewData["Title"] = "AllQueries";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
+
+    .collapsible {
+        border-style: solid;
+        border-width: 2px;
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        /*padding: 18px;*/
+        width: 100%;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        font-weight: bolder;
+        border-color: #f1f1f1;
+    }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+    /*.collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }*/
+
+    /*.active:after {
+        content: "\2212";
+    }*/
+
+    .content {
+        padding: 0 18px;
+        /*max-height: 0;*/
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+    }
+</style>
+
+<h1>AllQueries</h1>
+
+<p>
+    <a href="/Query/CreateQuery">Create New</a>
+</p>
+
+
+<div class="row" style="background-color:#cdcdcd; min-height:60px; font-weight:bolder;">
+    <div class="col-md-3">
+        @Html.DisplayNameFor(model => model.Query)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayNameFor(model => model.ImageUri)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayNameFor(model => model.Thema)
+    </div>
+    <div class="col-md-3">
+        @Html.DisplayNameFor(model => model.Comment)
+    </div>
+    <div class="col-md-2">
+        Actions
+    </div>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="row collapsible" style="min-height:60px;">
+        <div class="col-md-3">
+            @Html.DisplayFor(modelItem => item.Query)
+        </div>
+        <div class="col-md-2">
+            <img src="@("/img"+@item.ImageUri)" style="height:50px;max-width:70px;"/>
+        </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(modelItem => item.Thema)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayFor(modelItem => item.Comment)
+        </div>
+        <div class="col-md-2">
+            <a href="/Query/ViewQuery?Id=@item.Id">Details</a> 
+            <a href="/Query/Delete?Id=@item.Id">Delete</a>
+        </div>
+    </div>
+    <div class="content" style="display: none;">
+        @foreach (var elm in item.Responses)
+        {
+            <div class="row">
+                <div class="col-md-9">
+                    @elm.Response
+                </div>
+                <div class="col-md-3">
+                    @(elm.IsRight ? "Adevarata" : "Falsa")
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+
+
+
