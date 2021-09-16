@@ -1,0 +1,16 @@
+﻿@using PddAdmin.Models
+@model List<QueryItem>
+    const AllImages = {
+
+@foreach (var itm in Model)
+{
+    if (!string.IsNullOrEmpty(itm.ImageUri))
+    {
+        <div>"@itm.ImageUri":require("@itm.ImageUri"),</div>
+    }
+}
+    };
+
+
+
+

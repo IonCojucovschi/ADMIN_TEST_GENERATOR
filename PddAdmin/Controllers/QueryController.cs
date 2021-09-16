@@ -44,6 +44,12 @@ namespace PddAdmin.Controllers
             return View("AllQueries", allQuery);
         }
 
+        // Get: All images 
+        public ActionResult AllImages() 
+        {
+            var allQuery = _pDDContext.QueryItem.ToList();
+            return View(allQuery);
+        }
 
         [HttpGet]
         public ActionResult ViewQuery(int Id)

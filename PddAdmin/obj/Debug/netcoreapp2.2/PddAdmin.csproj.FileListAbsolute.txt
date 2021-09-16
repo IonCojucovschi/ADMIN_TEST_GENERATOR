@@ -25,3 +25,36 @@ C:\My Program Files\Sources\PddAdmin\PddAdmin\obj\Debug\netcoreapp2.2\Razor\View
 C:\My Program Files\Sources\PddAdmin\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\My Program Files\Sources\PddAdmin\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 C:\My Program Files\Sources\PddAdmin\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.deps.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.runtimeconfig.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.runtimeconfig.dev.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.dll
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.pdb
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.Views.dll
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\PddAdmin.Views.pdb
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.AssemblyInfoInputs.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.AssemblyInfo.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.csproj.CoreCompileInputs.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.RazorAssemblyInfo.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.RazorAssemblyInfo.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.TagHelpers.input.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.TagHelpers.output.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.RazorCoreGenerate.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.RazorTargetAssemblyInfo.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.RazorTargetAssemblyInfo.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.Views.pdb
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.dll
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.pdb
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.csproj.CopyComplete
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\AllTest.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\bin\Debug\netcoreapp2.2\appsettings.json
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.csproj.AssemblyReference.cache
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.GeneratedMSBuildEditorConfig.editorconfig
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Query\AllImages.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Query\AllQueries.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Query\CreateQuery.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
+D:\Personal\ADMIN_TEST_GENERATOR\PddAdmin\obj\Debug\netcoreapp2.2\PddAdmin.genruntimeconfig.cache
