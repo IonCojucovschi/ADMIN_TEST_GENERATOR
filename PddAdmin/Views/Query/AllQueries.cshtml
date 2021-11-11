@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PddAdmin.Models.QueryItem>
+﻿@model List<IGrouping<string,PddAdmin.Models.QueryItem>>
 
 @{
     ViewData["Title"] = "AllQueries";
@@ -63,56 +63,87 @@
 
 <div class="row" style="background-color:#cdcdcd; min-height:60px; font-weight:bolder;">
     <div class="col-md-3">
-        @Html.DisplayNameFor(model => model.Query)
+        Query @*@Html.DisplayNameFor(model => model.Query)*@
     </div>
     <div class="col-md-2">
-        @Html.DisplayNameFor(model => model.ImageUri)
+        ImageUri @*@Html.DisplayNameFor(model => model.ImageUri)*@
     </div>
     <div class="col-md-2">
-        @Html.DisplayNameFor(model => model.Thema)
+        Thema@*@Html.DisplayNameFor(model => model.Thema)*@
     </div>
     <div class="col-md-3">
-        @Html.DisplayNameFor(model => model.Comment)
+        Comment@*@Html.DisplayNameFor(model => model.Comment)*@
     </div>
     <div class="col-md-2">
         Actions
     </div>
 </div>
 
-@foreach (var item in Model)
-{
-    <div class="row collapsible" style="min-height:60px;">
-        <div class="col-md-3">
-            @Html.DisplayFor(modelItem => item.Query)
-        </div>
-        <div class="col-md-2">
-            <img src="@("/img"+@item.ImageUri)" style="height:50px;max-width:70px;"/>
-        </div>
-        <div class="col-md-2">
-            @Html.DisplayFor(modelItem => item.Thema)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(modelItem => item.Comment)
-        </div>
-        <div class="col-md-2">
-            <a href="/Query/ViewQuery?Id=@item.Id">Details</a> 
-            <a href="/Query/Delete?Id=@item.Id">Delete</a>
-        </div>
-    </div>
-    <div class="content" style="display: none;">
-        @foreach (var elm in item.Responses)
-        {
-            <div class="row">
-                <div class="col-md-9">
-                    @elm.Response
-                </div>
-                <div class="col-md-3">
-                    @(elm.IsRight ? "Adevarata" : "Falsa")
+
+
+<div id="accordion">
+
+    @foreach (var group in Model)
+    {
+
+
+        <div class="card">
+            <div class="card-header" id="@group.FirstOrDefault().ChapterKey">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(group.FirstOrDefault().ChapterKey)" aria-expanded="false" aria-controls="collapse@(group.FirstOrDefault().ChapterKey)">
+                        Capter key: @group.FirstOrDefault().ChapterKey
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse@(group.FirstOrDefault().ChapterKey)" class="collapse" aria-labelledby="@group.FirstOrDefault().ChapterKey" data-parent="#accordion">
+                <div class="">
+
+                    @foreach (var item in group)
+                    {
+                        <div class="row collapsible" style="min-height:60px;">
+                            <div class="col-md-3">
+                                @Html.DisplayFor(modelItem => item.Query)
+                            </div>
+                            <div class="col-md-2">
+                                @if (!string.IsNullOrEmpty(item.ImageUri))
+                                {
+                                    <img src="@("/img"+@item.ImageUri)" style="height:50px;max-width:70px;" />
+                                }
+                            </div>
+                            <div class="col-md-2">
+                                @Html.DisplayFor(modelItem => item.Thema)
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DisplayFor(modelItem => item.Comment)
+                            </div>
+                            <div class="col-md-2">
+                                <a href="/Query/ViewQuery?Id=@item.Id">Details</a>
+                                <a href="/Query/Delete?Id=@item.Id">Delete</a>
+                            </div>
+                        </div>
+                        <div class="content" style="display: none;">
+                            @foreach (var elm in item.Responses)
+                            {
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        @elm.Response
+                                    </div>
+                                    <div class="col-md-3">
+                                        @(elm.IsRight ? "Adevarata" : "Falsa")
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
-        }
-    </div>
-}
+        </div>
+    }
+
+</div>
+
+
 
 <script>
     var coll = document.getElementsByClassName("collapsible");
@@ -130,6 +161,3 @@
         });
     }
 </script>
-
-
-

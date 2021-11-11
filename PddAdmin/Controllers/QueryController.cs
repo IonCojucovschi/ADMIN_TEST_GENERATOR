@@ -41,7 +41,8 @@ namespace PddAdmin.Controllers
             foreach (var qr in allQuery) {
                 qr.Responses = _pDDContext.Responses.Where(elm => elm.QueryId == qr.Id).ToList();
             }
-            return View("AllQueries", allQuery);
+            var groupedTests = allQuery.GroupBy(el => el.ChapterKey).ToList();
+            return View("AllQueries", groupedTests);
         }
 
         // Get: All images 
