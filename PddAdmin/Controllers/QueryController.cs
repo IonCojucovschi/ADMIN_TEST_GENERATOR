@@ -45,6 +45,16 @@ namespace PddAdmin.Controllers
             return View("AllQueries", groupedTests);
         }
 
+        public ActionResult AllQueriesOld()
+        {
+            var allQuery = _pDDContext.QueryItem.ToList();
+            foreach (var qr in allQuery)
+            {
+                qr.Responses = _pDDContext.Responses.Where(elm => elm.QueryId == qr.Id).ToList();
+            }
+            return View("AllQueriesOld", allQuery);
+        }
+
         // Get: All images 
         public ActionResult AllImages() 
         {

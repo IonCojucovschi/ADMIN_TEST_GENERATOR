@@ -88,15 +88,15 @@
 
 
         <div class="card">
-            <div class="card-header" id="@group.FirstOrDefault().ChapterKey">
+            <div class="card-header" id="@group.FirstOrDefault().ChapterKey.Replace(' ','_')">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(group.FirstOrDefault().ChapterKey)" aria-expanded="false" aria-controls="collapse@(group.FirstOrDefault().ChapterKey)">
-                        Capter key: @group.FirstOrDefault().ChapterKey
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse@(group.FirstOrDefault().ChapterKey.Replace(' ','_'))" aria-expanded="false" aria-controls="collapse@(group.FirstOrDefault().ChapterKey)">
+                        Capter key: @group.FirstOrDefault().ChapterKey (@group.Count() Queries)
                     </button>
                 </h5>
             </div>
 
-            <div id="collapse@(group.FirstOrDefault().ChapterKey)" class="collapse" aria-labelledby="@group.FirstOrDefault().ChapterKey" data-parent="#accordion">
+            <div id="collapse@(group.FirstOrDefault().ChapterKey.Replace(' ','_'))" class="collapse" aria-labelledby="@group.FirstOrDefault().ChapterKey.Replace(' ','_')" data-parent="#accordion">
                 <div class="">
 
                     @foreach (var item in group)
