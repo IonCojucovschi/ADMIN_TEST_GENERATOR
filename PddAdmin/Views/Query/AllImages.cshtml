@@ -6,7 +6,7 @@
 {
     if (!string.IsNullOrEmpty(itm.ImageUri))
     {
-        <div>"@itm.ImageUri":require("@itm.ImageUri"),</div>
+        <div>"@itm.ImageUri.ToLowerInvariant().Replace(" ","")":require("./img(@itm.ImageUri.ToLowerInvariant())"),</div>
     }
 }
     };
