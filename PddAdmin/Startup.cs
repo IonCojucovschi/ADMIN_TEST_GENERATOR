@@ -29,6 +29,11 @@ namespace PddAdmin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -37,9 +42,10 @@ namespace PddAdmin
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<PDDContext>(options => options.UseSqlite($"Data Source={_appHost.ContentRootPath}/pdd.db"));
             //services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
+
 
         }
 
